@@ -9,5 +9,5 @@ jobs:
       - name: Debug GitHub Information
         run: |
           echo "Workflow Triggered in Branch '${{ github.ref }}'"
-          echo "Workflow Triggered by Event '${{ github.event }}'"
-          echo "Workflow Triggered by Actor '${{ github.action }}'"
+          echo "Workflow Triggered by Event '${{ github.event_name }}'"
+          echo "Workflow Triggered by Actor '${{ github.actor }}'"
