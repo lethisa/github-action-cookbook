@@ -11,3 +11,18 @@ jobs:
           echo "Workflow Triggered in Branch '${{ github.ref }}'"
           echo "Workflow Triggered by Event '${{ github.event_name }}'"
           echo "Workflow Triggered by Actor '${{ github.actor }}'"
+
+  lint:
+    name: Action Lint
+    runs-on: ubuntu-22.04
+    permissions: 
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Checkout Code
+        uses: action/checkout@v4
+      - name: actionlint
+        uses: raven-actions/actionlint@v2.0.0
+      - name: Pull Request Title
+        run: echo "PR Title is ${{ github.event.pull_request.title }}"
+          
