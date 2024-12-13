@@ -11,7 +11,7 @@ on:
 jobs:
   Greetings:
     name: Greetings
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Hello Friends
         run: |
@@ -26,7 +26,7 @@ jobs:
 
   Test:
     name: Tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     environment: Test
     needs: Greetings
     steps:
@@ -38,7 +38,7 @@ jobs:
 
   Load-Test:
     name: Load Tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     environment: Load-Test
     needs: Greetings
     steps:
@@ -50,7 +50,7 @@ jobs:
 
   Production:
     name: Production
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     environment: 
       name: Production
       url: https://writeabout.net
