@@ -67,6 +67,7 @@ jobs:
   Cleanup:
     name: Cleanup
     runs-on: ubuntu-22.04
+    needs: [Greetings, Test, Load-Test, Production]
     steps:
       - name: Cleanup Workspace
         run: rm -rf ${{ github.workspace }}
