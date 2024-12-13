@@ -64,10 +64,10 @@ jobs:
           sec=$(echo ${{ secrets.MY_SECRET }} | sed 's/./& /g')
           echo "My secret is 🤫 '$sec'"
   
-  Cleanup:
-    name: Cleanup
-    runs-on: ubuntu-20.04
-    needs: [Greetings, Test, Load-Test, Production]
-    steps:
-      - name: Cleanup Workspace
-        run: rm -rf ${{ github.workspace }}/*
+  # Cleanup:
+  #   name: Cleanup
+  #   runs-on: ubuntu-20.04
+  #   needs: [Greetings, Test, Load-Test, Production]
+  #   steps:
+  #     - name: Cleanup Workspace
+  #       run: rm -rf ${{ github.workspace }}/*
