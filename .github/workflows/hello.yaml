@@ -1,0 +1,23 @@
+name: Hello Workflows
+
+on: 
+  push: 
+    branches: 
+      - main
+  workflow_dispatch: 
+
+jobs:
+  first_job:
+    name: Greetings
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Hello Friends
+        run: |
+          echo "Hello Friends 👋🏻 from ${{ github.actor }}"
+          echo "Current Branch is '${{ github.ref }}'"
+        shell: bash
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: List Contents
+        run: tree
