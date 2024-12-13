@@ -19,6 +19,11 @@ jobs:
       contents: read
       pull-requests: write
     steps:
+      - run: |
+          echo "::debug::This is a Debug Message"
+          echo "::notice::This is a Notice Message"
+          echo "::warning::This is a Warning Message"
+          echo "::error::This is an Error Message"
       - name: Checkout Code
         uses: actions/checkout@v4
       - name: Action Lint
