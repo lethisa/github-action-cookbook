@@ -5,6 +5,9 @@ inputs:
     description: 'Who to Great'
     required: true
     default: 'World'
+outputs:
+  answer:
+    description: 'The Answer of Everything (always 42)'
 runs:
   using: 'docker'
   image:  'Dockerfile'
