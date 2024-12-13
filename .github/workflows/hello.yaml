@@ -37,8 +37,6 @@ jobs:
           echo "Hello ${{ vars.WHO_TO_GREET }} 👋🏻 from ${{ github.actor }}"
           sec=$(echo ${{ secrets.MY_SECRET }} | sed 's/./& /g')
           echo "My secret is 🤫 '$sec'"
-      - name: Cleanup Workspace
-        run: rm -rf ${{ github.workspace }}
 
   Load-Test:
     name: Load Tests
@@ -51,8 +49,6 @@ jobs:
           echo "Hello ${{ vars.WHO_TO_GREET }} 👋🏻 from ${{ github.actor }}"
           sec=$(echo ${{ secrets.MY_SECRET }} | sed 's/./& /g')
           echo "My secret is 🤫 '$sec'"
-      - name: Cleanup Workspace
-        run: rm -rf ${{ github.workspace }}
 
   Production:
     name: Production
@@ -67,5 +63,10 @@ jobs:
           echo "Hello ${{ vars.WHO_TO_GREET }} 👋🏻 from ${{ github.actor }}"
           sec=$(echo ${{ secrets.MY_SECRET }} | sed 's/./& /g')
           echo "My secret is 🤫 '$sec'"
+  
+  Cleanup:
+    name: Cleanup
+    runs-on: ubuntu-22.04
+    steps:
       - name: Cleanup Workspace
         run: rm -rf ${{ github.workspace }}
