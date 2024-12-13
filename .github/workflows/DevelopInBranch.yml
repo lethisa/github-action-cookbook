@@ -1,0 +1,13 @@
+name: Development in a Branch
+on: [ pull_request, workflow_dispatch ]
+
+jobs:
+  debug:
+    name: Debug Information
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Debug GitHub Information
+        run: |
+          echo "Workflow Triggered in Branch '${{ github.ref }}'"
+          echo "Workflow Triggered by Event '${{ github.event }}'"
+          echo "Workflow Triggered by Actor '${{ github.action }}'"
