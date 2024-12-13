@@ -5,22 +5,59 @@ on:
     branches: 
       - main
   workflow_dispatch: 
-  schedule:
-    - cron: '*/30 * * * *'
+  # schedule:
+  #   - cron: '*/30 * * * *'
 
 jobs:
-  first_job:
+  Greetings:
     name: Greetings
     runs-on: ubuntu-latest
-
     steps:
       - name: Hello Friends
         run: |
           echo "Hello ${{ vars.WHO_TO_GREET }} 👋🏻 from ${{ github.actor }}"
           echo "Current Branch is '${{ github.ref }}'"
-          echo "My Secret is ${{ secrets.MY_SECRET }}"
+          echo "My Secret is 🤫 ${{ secrets.MY_SECRET }}"
         shell: bash
       - name: Checkout
         uses: actions/checkout@v4
       - name: List Contents
         run: tree
+
+  Test:
+    name: Tests
+    runs-on: ubuntu-latest
+    environment: Test
+    needs: Greetings
+    steps:
+      - name: Test - Greetings
+        run: |
+          echo "Hello ${{ vars.WHO_TO_GREET }} 👋🏻 from ${{ github.actor }}."
+          sec=$(echo ${{ secrets.MY_SECRET }} | sed 's/./& /g')
+          echo "My secret is 🤫 '$sec'.
+
+  Load-Test:
+    name: Tests
+    runs-on: ubuntu-latest
+    environment: Load-Test
+    needs: Greetings
+    steps:
+      - name: Load-Test - Greetings
+        run: |
+          echo "Hello ${{ vars.WHO_TO_GREET }} 👋🏻 from ${{ github.actor }}."
+          sec=$(echo ${{ secrets.MY_SECRET }} | sed 's/./& /g')
+          echo "My secret is 🤫 '$sec'.
+
+  Production:
+    name: Production
+    runs-on: ubuntu-latest
+    environment: 
+      name: Production
+      url: https://writeabout.net
+    needs: [Test, Load-Test]
+    steps:
+      - name: Production - Greetings
+        run: |
+          echo "Hello ${{ vars.WHO_TO_GREET }} 👋🏻 from ${{ github.actor }}."
+          sec=$(echo ${{ secrets.MY_SECRET }} | sed 's/./& /g')
+          echo "My secret is 🤫 '$sec'.
