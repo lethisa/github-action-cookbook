@@ -32,21 +32,21 @@ jobs:
     steps:
       - name: Test - Greetings
         run: |
-          echo "Hello ${{ vars.WHO_TO_GREET }} 👋🏻 from ${{ github.actor }}."
+          echo "Hello ${{ vars.WHO_TO_GREET }} 👋🏻 from ${{ github.actor }}"
           sec=$(echo ${{ secrets.MY_SECRET }} | sed 's/./& /g')
-          echo "My secret is 🤫 '$sec'.
+          echo "My secret is 🤫 '$sec'
 
   Load-Test:
-    name: Tests
+    name: Load Tests
     runs-on: ubuntu-latest
     environment: Load-Test
     needs: Greetings
     steps:
       - name: Load-Test - Greetings
         run: |
-          echo "Hello ${{ vars.WHO_TO_GREET }} 👋🏻 from ${{ github.actor }}."
+          echo "Hello ${{ vars.WHO_TO_GREET }} 👋🏻 from ${{ github.actor }}"
           sec=$(echo ${{ secrets.MY_SECRET }} | sed 's/./& /g')
-          echo "My secret is 🤫 '$sec'.
+          echo "My secret is 🤫 '$sec'
 
   Production:
     name: Production
@@ -58,6 +58,6 @@ jobs:
     steps:
       - name: Production - Greetings
         run: |
-          echo "Hello ${{ vars.WHO_TO_GREET }} 👋🏻 from ${{ github.actor }}."
+          echo "Hello ${{ vars.WHO_TO_GREET }} 👋🏻 from ${{ github.actor }}"
           sec=$(echo ${{ secrets.MY_SECRET }} | sed 's/./& /g')
-          echo "My secret is 🤫 '$sec'.
+          echo "My secret is 🤫 '$sec'
