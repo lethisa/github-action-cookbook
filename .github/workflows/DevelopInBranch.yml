@@ -20,9 +20,8 @@ jobs:
       pull-requests: write
     steps:
       - name: Checkout Code
-        uses: action/checkout@v4
+        uses: actions/checkout@v4
       - name: actionlint
         uses: raven-actions/actionlint@v2.0.0
       - name: Pull Request Title
         run: echo "PR Title is ${{ github.event.pull_request.title }}"
-          
