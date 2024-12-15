@@ -4,7 +4,7 @@ title: '🗒️ Repository Request: '
 labels: 
   - 'repo-request'
   - 'issue-ops'
-projects: 'lethisa/5'
+projects: ["lethisa/5"]
 assignees: 
   - lethisa
 body:
