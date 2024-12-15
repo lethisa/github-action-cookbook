@@ -8,3 +8,6 @@ jobs:
     runs-on: arc-runner-set
     steps:
     - run: echo "🎉 This job uses runner scale set runners!"
+    - uses: step-security/harden-runner@v2.6.1
+      with:
+        egress-policy: audit
