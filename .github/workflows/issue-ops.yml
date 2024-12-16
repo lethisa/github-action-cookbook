@@ -79,7 +79,7 @@ jobs:
       ISSUE_USER: ${{ github.event.issue.user.login }}
       ISSUE_NUMBER: ${{ github.event.issue.number }}
     steps:
-      - name: Create app token
+      - name: Create App Token
         uses: actions/create-github-app-token@v1.6.2
         id: get-workflow-token
         with:
@@ -87,7 +87,7 @@ jobs:
           private-key: ${{ secrets.PRIVATE_KEY }}
           owner: ${{ vars.ORGANIZATION }}
 
-      - name: Create repository
+      - name: Create Repository
         id: create-repo
         env: 
           GH_TOKEN: ${{ steps.get-workflow-token.outputs.token }}

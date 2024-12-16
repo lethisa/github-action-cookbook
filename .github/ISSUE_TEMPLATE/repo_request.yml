@@ -23,9 +23,9 @@ body:
       description: 'Pick your department. It will be used as a prefix for the repository name.'
       multiple: false
       options:
-        - HSSE
-        - PMO
-        - ICT
+        - hsse
+        - pmo
+        - ict
       default: 0
     validations:
       required: true
