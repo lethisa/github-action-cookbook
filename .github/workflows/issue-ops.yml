@@ -8,7 +8,7 @@ on:
 jobs:
   issue-ops:
     if: ${{ github.event.label.name == 'repo-request' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     permissions:
       issues: write
       contents: read
@@ -68,12 +68,13 @@ jobs:
           
   create-repo:
     needs: issue-ops
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     environment: repo-creation
     permissions:
       issues: write
       contents: read
     env: 
+      REPO_OWNER: ${{ vars.ORGANIZATION }}
       REPO_NAME: ${{ needs.issue-ops.outputs.REPO_NAME }}
       ISSUE_USER: ${{ github.event.issue.user.login }}
       ISSUE_NUMBER: ${{ github.event.issue.number }}
@@ -84,6 +85,7 @@ jobs:
         with:
           app-id: ${{ vars.APP_ID }}
           private-key: ${{ secrets.PRIVATE_KEY }}
+          owner: ${{ vars.ORGANIZATION }}
 
       - name: Create repository
         id: create-repo
